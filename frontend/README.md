@@ -5,4 +5,5 @@ Written in React
 ## Local Environment Setup
 
 - cd into `splitter-project/frontend/`
-- run npm install
+- run `npm install`
+- run `npm install axios`
