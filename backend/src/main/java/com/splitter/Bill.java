@@ -1,5 +1,6 @@
 package com.splitter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -19,8 +20,10 @@ public class Bill {
     )
     private Integer id;
     private String title;
-    private Date date;
     private double total;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date date;
 
     public Bill(Integer id, String title, Date date, double total) {
         this.id = id;
