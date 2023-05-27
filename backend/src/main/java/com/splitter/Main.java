@@ -16,7 +16,7 @@ public class Main {
 
     private final BillRepository billRepository;
 
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     public Main(BillRepository billRepository) {
         this.billRepository = billRepository;
