@@ -1,4 +1,4 @@
-package com.splitter;
+package com.splitter.bill;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

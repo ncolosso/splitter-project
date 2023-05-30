@@ -3,7 +3,7 @@ import {NewBillRequest, saveBill} from "../api/billService.tsx";
 
 interface Props {
   onFormClose: () => void;
-  onSubmitNewBill: (title: string, date: string) => void;
+  onSubmitNewBill: () => void;
 }
 
 const NewBillForm = ({ onFormClose, onSubmitNewBill }: Props) => {
@@ -13,7 +13,7 @@ const NewBillForm = ({ onFormClose, onSubmitNewBill }: Props) => {
   const onFormSubmit = (title: string, date: string) => {
     saveBill(new NewBillRequest(title, date)).then(res => {
       console.log(res);
-      onSubmitNewBill(title, date);
+      onSubmitNewBill();
     });
   }
 

@@ -4,17 +4,6 @@ import NewBillForm from "./NewBillForm.tsx";
 import BillRow from "./BillRow.tsx";
 
 function BillsList() {
-    const initData = [
-        { id: 1, title: "Amity Hall", date: "May 1, 2023", total: 249.0 },
-        { id: 2, title: "White Horse Tavern", date: "Feb 21, 2023", total: 68.94 },
-        { id: 3, title: "12 Chairs", date: "Oct 11, 2022", total: 146.14 },
-    ];
-
-    const [staticBillsData, setStaticBillsData] = useState(initData);
-
-    const handleDeleteBill = (billId: number) => {
-        setStaticBillsData(staticBillsData.filter((bill) => bill.id != billId));
-    };
 
     const [bills, setBills] = useState<any[]>([]);
     const [formVisible, setFormVisible] = useState(false);
@@ -29,13 +18,8 @@ function BillsList() {
         fetchBills();
     }, [])
 
-    const handleSubmitNewBill = (title: string, date: string) => {
-        staticBillsData.push({
-            id: Math.floor(Math.random() * 100),
-            title: title,
-            date: date,
-            total: 0,
-        });
+    const handleSubmitNewBill = () => {
+        fetchBills();
         setFormVisible(false);
     };
 
@@ -68,7 +52,7 @@ function BillsList() {
                     onFormClose={() => {
                         setFormVisible(false);
                     }}
-                    onSubmitNewBill={(title, date) => handleSubmitNewBill(title, date)}
+                    onSubmitNewBill={handleSubmitNewBill}
                 />
             )}
             {bills.length === 0 && <p>No bills found.</p>}
@@ -78,7 +62,7 @@ function BillsList() {
                         <BillRow
                             key={bill.id}
                             bill={bill}
-                            onDelete={(billId) => handleDeleteBill(billId)}
+                            onDelete={(billId) => console.log(billId)}
                         />
                     );
                 })}
