@@ -4,19 +4,18 @@ class BillService {
   url: string = "localhost:8080/api/v1/splitter/";
 
   getBills() {
-    var response = "";
+      let bills = "";
 
-    axios
+      axios
       .get(this.url + "bills")
       .then((response) => {
-        const bills = response.data;
-        response = bills;
+        bills = response.data;
       })
       .catch((error) => {
-        //pass
+        console.log(error);
       });
 
-    return response;
+    return bills;
   }
 }
 
