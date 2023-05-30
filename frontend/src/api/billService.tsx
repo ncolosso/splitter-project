@@ -1,22 +1,37 @@
 import axios from "axios";
 
-class BillService {
-  url: string = "localhost:8080/api/v1/splitter/";
+let apiBaseUrl = "http://localhost:8080/api/v1/splitter/";
+let endpoint = "bill";
 
-  getBills() {
-      let bills = "";
-
-      axios
-      .get(this.url + "bills")
-      .then((response) => {
-        bills = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    return bills;
-  }
+export const getBills = async () => {
+    try {
+        return await axios.get(apiBaseUrl + endpoint);
+    } catch (e) {
+        throw(e);
+    }
 }
 
-export default BillService;
+export const saveBill = async (bill: NewBillRequest) => {
+    try {
+        return await axios.post(apiBaseUrl + endpoint, bill)
+    } catch (e) {
+        throw e;
+    }
+}
+
+export class NewBillRequest {
+    // @ts-ignore
+    private title: string;
+    // @ts-ignore
+    private date: string;
+    // @ts-ignore
+    private total: number
+    constructor(
+        title: string,
+        date: string
+    ) {
+        this.title = title;
+        this.date = date;
+        this.total = 0;
+    }
+}

@@ -1,4 +1,4 @@
-package com.splitter;
+package com.splitter.bill;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
