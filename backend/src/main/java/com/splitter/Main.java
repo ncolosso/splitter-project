@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @SpringBootApplication
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/splitter")
 public class Main {
 
@@ -26,7 +27,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    @GetMapping("bills")
+    @GetMapping("bill")
     public List<Bill> getBills() {
         return billRepository.findAll();
     }
@@ -37,7 +38,7 @@ public class Main {
             double total
     ) {}
 
-    @PostMapping("bills")
+    @PostMapping("bill")
     public void addBill(@RequestBody NewBillRequest request) throws ParseException {
         Bill bill = new Bill();
         bill.setTitle(request.title);
