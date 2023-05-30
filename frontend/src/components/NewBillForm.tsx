@@ -1,13 +1,21 @@
 import { useState } from "react";
+import {NewBillRequest, saveBill} from "../api/billService.tsx";
 
 interface Props {
   onFormClose: () => void;
-  onFormSubmit: (title: string, date: string) => void;
+  onSubmitNewBill: (title: string, date: string) => void;
 }
 
-const NewBillForm = ({ onFormClose, onFormSubmit }: Props) => {
+const NewBillForm = ({ onFormClose, onSubmitNewBill }: Props) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+
+  const onFormSubmit = (title: string, date: string) => {
+    saveBill(new NewBillRequest(title, date)).then(res => {
+      console.log(res);
+      onSubmitNewBill(title, date);
+    });
+  }
 
   return (
     <div className="">
