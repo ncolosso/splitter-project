@@ -1,78 +1,78 @@
-import { useState } from "react";
+import {useState} from "react";
 import {NewBillRequest, saveBill} from "../api/billService.tsx";
+import {Button, TextField} from "@mui/material";
+import {DatePicker} from "@mui/x-date-pickers";
+import {Dayjs} from 'dayjs';
 
 interface Props {
-  onFormClose: () => void;
-  onSubmitNewBill: () => void;
+    onFormClose: () => void;
+    onSubmitNewBill: () => void;
 }
 
-const NewBillForm = ({ onFormClose, onSubmitNewBill }: Props) => {
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+const NewBillForm = ({onFormClose, onSubmitNewBill}: Props) => {
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState("");
 
-  const onFormSubmit = (title: string, date: string) => {
-    saveBill(new NewBillRequest(title, date)).then(res => {
-      console.log(res);
-      onSubmitNewBill();
-    });
-  }
+    const onFormSubmit = (title: string, date: string) => {
+        saveBill(new NewBillRequest(title, date)).then(res => {
+            console.log(res);
+            onSubmitNewBill();
+        });
+    }
 
-  return (
-    <div className="">
-      <form>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            id="title"
-            aria-describedby="titleExample"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <div id="titleExample" className="form-text">
-            ex. Dinner at 12 Chairs
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="date" className="form-label">
-            Date
-          </label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <div id="dateFormat" className="form-text">
-            ex. Jan 1, 2023
-          </div>
-        </div>
-        <div className="d-flex">
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={() => onFormSubmit(title, date)}
-          >
-            Submit
-          </button>
-          &nbsp;
-          <button
-            type="button"
-            className="btn btn-outline-secondary"
-            onClick={onFormClose}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+    // DATE PICKER
+    const [dateValue, setDateValue] = useState<Dayjs | null>(null);
+    const datePickerHandler = (newValue: any) => {
+        // must be in 2023-03-21 YYYY-MM-DD format
+        setDateValue(newValue);
+        setDate(newValue.format("YYYY-MM-DD"));
+    }
+
+    return (
+        <>
+            <form>
+                <div className="mb-3">
+                    <TextField
+                        id={""}
+                        label={"Title"}
+                        variant={"outlined"}
+                        onChange={(e) => setTitle(e.target.value)}
+                    >
+                    </TextField>
+                    <div id="titleExample" className="form-text">
+                        ex. Dinner at 12 Chairs
+                    </div>
+                </div>
+                <div className="mb-3">
+
+                    <DatePicker
+                        value={dateValue}
+                        onChange={datePickerHandler}
+                    />
+
+                </div>
+                <div className="d-flex">
+                    <Button
+                        type="submit"
+                        // color={"success"}
+                        // className="btn btn-primary"
+                        onClick={() => onFormSubmit(title, date)}
+                    >
+                        Submit
+                    </Button>
+                    &nbsp;
+                    <Button
+                        color={"error"}
+                        // variant={"contained"}
+                        // className="btn btn-outline-secondary"
+                        onClick={onFormClose}
+                    >
+                        Cancel
+                    </Button>
+                </div>
+            </form>
+        </>
+    );
 };
 
 export default NewBillForm;
