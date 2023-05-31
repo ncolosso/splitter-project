@@ -1,15 +1,15 @@
   name: Splitter CI
 
   on:
-    pull_request:
     push:
+    pull_request:
+      branches:
+        - main
 
   jobs:
     run-backend-tests:
       runs-on: ubuntu-latest
       steps:
-        - name: CD into backend folder
-          run: cd ./backend
 
         - name: Checkout
           uses: actions/checkout@v3
@@ -19,6 +19,9 @@
           with:
             java-version: '17'
             distribution: 'temurin'
+
+        - name: CD into backend folder
+          run: cd ./backend
 
         - name: Build with Maven
           run: mvn clean package
