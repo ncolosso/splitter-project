@@ -21,9 +21,9 @@
             distribution: 'temurin'
 
         - name: Build with Maven
-          working-directory: backed
+          working-directory: backend
           run: mvn clean install
 
         - name: Run unit tests
-          working-directory: backed
+          working-directory: backend
           run: mvn test
