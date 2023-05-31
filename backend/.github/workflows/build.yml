@@ -20,9 +20,6 @@
             java-version: '17'
             distribution: 'temurin'
 
-        - name: CD into backend folder
-          run: cd ./backend
-
         - name: Build with Maven
           run: mvn clean package
 
