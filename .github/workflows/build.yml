@@ -20,10 +20,6 @@
             java-version: '17'
             distribution: 'temurin'
 
-        - name: Build with Maven
+        - name: Build and run Unit tests
           working-directory: backend
-          run: mvn clean install
-
-        - name: Run unit tests
-          working-directory: backend
-          run: mvn test
+          run: mvn -ntp -B verify
