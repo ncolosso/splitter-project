@@ -21,7 +21,7 @@
             distribution: 'temurin'
 
         - name: Build with Maven
-          run: mvn -B package --file backend/pom.xml
+          run: mvn clean install --projects :backend --also-make
 
         - name: Run unit tests
-          run: mvn test
+          run: mvn test --projects :backend --also-make
