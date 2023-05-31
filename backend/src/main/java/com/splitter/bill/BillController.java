@@ -2,40 +2,26 @@ package com.splitter.bill;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/splitter/bill")
 public class BillController {
 
-    private final BillRepository billRepository;
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private final BillService billService;
 
-    public BillController(BillRepository billRepository) {
-        this.billRepository = billRepository;
+    public BillController(BillService billService) {
+        this.billService = billService;
     }
 
     @GetMapping
     public List<Bill> getBills() {
-        return billRepository.findAll();
+        return billService.getBills();
     }
 
-    record NewBillRequest(
-            String title,
-            String date,
-            double total
-    ) {}
-
     @PostMapping
-    public void addBill(@RequestBody NewBillRequest request) throws ParseException {
-        Bill bill = new Bill();
-        bill.setTitle(request.title);
-        bill.setDate(simpleDateFormat.parse(request.date));
-        bill.setTotal(request.total);
-        billRepository.save(bill);
+    public void createBill(@RequestBody NewBillRequest newBillRequest) {
+        billService.createBill(newBillRequest);
     }
 }
