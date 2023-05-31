@@ -5,9 +5,12 @@
     push:
 
   jobs:
-    run-tests:
+    run-backend-tests:
       runs-on: ubuntu-latest
       steps:
+        - name: CD into backend folder
+          run: cd ./backend
+
         - name: Checkout
           uses: actions/checkout@v3
 
