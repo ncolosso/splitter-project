@@ -33,7 +33,7 @@ const NewBillForm = ({onFormClose, onSubmitNewBill}: Props) => {
             <form>
                 <div className="mb-3">
                     <TextField
-                        id={""}
+                        id={"title"}
                         label={"Title"}
                         variant={"outlined"}
                         onChange={(e) => setTitle(e.target.value)}

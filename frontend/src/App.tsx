@@ -1,3 +1,4 @@
+import {Context, useState, createContext} from "react";
 import HomePage from "./components/HomePage.tsx";
 import NavBar from "./components/NavBar";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
@@ -5,11 +6,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 
-function App() {
 
+export const DarkModeContext: Context<any> = createContext(false);
+
+function App() {
+    const [darkMode, setDarkMode] = useState(false);
     const theme = createTheme({
         palette: {
-            mode: 'light',
+            mode: darkMode ? 'dark' : 'light',
             primary: {
                 main: "#3767af",
             },
@@ -19,16 +23,24 @@ function App() {
         }
     });
 
+    const handleDarkModeToggle = (): void => {
+        setDarkMode(!darkMode);
+    }
+
     return (
         <>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
 
                 <ThemeProvider theme={theme}>
                     <CssBaseline>
-                        <NavBar/>
-                        <div className="d-flex flex-column p-4 gap-4 py-md-5">
-                            <HomePage/>
-                        </div>
+                        <DarkModeContext.Provider value={{darkMode, handleDarkModeToggle}}>
+
+                            <NavBar/>
+                            {/*<NavBarMUI/>*/}
+                            <div className="d-flex flex-column p-4 gap-4 py-md-5">
+                                <HomePage/>
+                            </div>
+                        </DarkModeContext.Provider>
                     </CssBaseline>
                 </ThemeProvider>
             </LocalizationProvider>

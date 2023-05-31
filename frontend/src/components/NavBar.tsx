@@ -15,6 +15,7 @@ const NavBar = () => {
         <i>
           <span className="navbar-text fs-6">the bill splitting helper</span>
         </i>
+
       </div>
     </nav>
   );
