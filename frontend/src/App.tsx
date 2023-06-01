@@ -1,6 +1,7 @@
 import {Context, useState, createContext} from "react";
 import HomePage from "./components/HomePage.tsx";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
+import NavBarMUI from "./components/NavBarMUI.tsx";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {LocalizationProvider} from '@mui/x-date-pickers';
@@ -35,8 +36,8 @@ function App() {
                     <CssBaseline>
                         <DarkModeContext.Provider value={{darkMode, handleDarkModeToggle}}>
 
-                            <NavBar/>
-                            {/*<NavBarMUI/>*/}
+                            {/*<NavBar/>*/}
+                            <NavBarMUI/>
                             <div className="d-flex flex-column p-4 gap-4 py-md-5">
                                 <HomePage/>
                             </div>

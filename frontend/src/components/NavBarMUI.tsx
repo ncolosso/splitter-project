@@ -1,5 +1,5 @@
 import {JSX} from "react";
-import {Navbar, Text, Spacer, Link} from "@nextui-org/react";
+import {Navbar, Text, Spacer, Link, Image} from "@nextui-org/react";
 import {Button} from "@mui/material";
 // import DarkModeToggle from "./DarkModeToggle.tsx";
 
@@ -18,10 +18,10 @@ export default function NavBarMUI(): JSX.Element {
 
         >
             <Navbar.Brand>
-
                 <Navbar.Toggle aria-label={"toggle"}/>
                 <Spacer y={.5}/>
                 {/* TODO LOGO HERE */}
+                <Image src={"../src/assets/split_logo.png"} width={50} height={50} alt={"logo"}/>
                 <Text h1>Splitter</Text>
                 <Spacer y={1}/>
                 <Text i>the bill splitting app</Text>
