@@ -2,6 +2,12 @@ import {useEffect, useState} from "react";
 import {getBills} from "../api/billService.tsx";
 import NewBillForm from "./NewBillForm.tsx";
 import BillRow from "./BillRow.tsx";
+// MUI
+import {Button} from "@mui/material";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 function BillsList() {
 
@@ -26,9 +32,11 @@ function BillsList() {
     return (
         <>
             <div className="d-flex">
+
                 <h1>My Bills</h1> &nbsp;
-                <button
-                    type="button"
+
+                <Button
+                    variant={"contained"}
                     className="btn btn-outline-primary btn-lg"
                     onClick={() => {
                         setFormVisible(true);
@@ -45,8 +53,11 @@ function BillsList() {
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                     </svg>
                     New
-                </button>
+                </Button>
+
             </div>
+
+
             {formVisible && (
                 <NewBillForm
                     onFormClose={() => {
