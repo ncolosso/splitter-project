@@ -1,4 +1,6 @@
-import {Chip, Box, Paper} from "@mui/material";
+import {Box, Chip, Paper} from "@mui/material";
+import {useEffect, useState} from "react";
+// import {Container} from '@nextui-org/react';
 // import {useState} from "react";
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 
 function BillRow({bill, onDelete}: Props) {
     // BOX
-    // const [width, setWidth] = useState(1000);
+    const [boxWidth, setBoxWidth] = useState(window.innerWidth);
     // const [height, setHeight] = useState(128);
 
     const dateFormatted = new Date(bill.date).toLocaleDateString('en-us', {
@@ -16,6 +18,19 @@ function BillRow({bill, onDelete}: Props) {
         day: "numeric",
         year: "numeric",
     });
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setBoxWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+
 
     return (
         <>
@@ -27,7 +42,7 @@ function BillRow({bill, onDelete}: Props) {
                         border: '.5px solid black',
                         m: 1,
                         p: 1,
-                        width: 1000,
+                        width: boxWidth,
                         height: 128,
                     },
                 }}
