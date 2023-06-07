@@ -3,8 +3,8 @@ services:
     container_name: splitter-postgres
     image: postgres
     environment:
-      POSTGRES_USER: ncolosso
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${DB_LOCAL_USERNAME}
+      POSTGRES_PASSWORD: ${DB_LOCAL_PASSWORD}
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
