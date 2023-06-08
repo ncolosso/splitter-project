@@ -19,7 +19,7 @@ public class BillService {
     }
 
     public List<Bill> getBills() {
-        return billRepository.findAll();
+        return billRepository.findByArchivedFalse();
     }
 
     public void createBill(NewBillRequest newBillRequest) {
@@ -33,6 +33,12 @@ public class BillService {
             bill.setDate(new Date());
         }
         bill.setTotal(newBillRequest.total());
+        billRepository.save(bill);
+    }
+
+    public void archiveBill(Integer id) {
+        Bill bill = billRepository.findById(id).orElseThrow(() -> new IllegalStateException("Bill with id " + id + " does not exist"));
+        bill.setArchived(true);
         billRepository.save(bill);
     }
 }

@@ -21,6 +21,7 @@ public class Bill {
     private Integer id;
     private String title;
     private double total;
+    private boolean archived;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
@@ -30,11 +31,14 @@ public class Bill {
         this.title = title;
         this.date = date;
         this.total = total;
+        this.archived = false;
     }
 
-    public Bill() {
+    public Bill() {}
 
-    }
+    public Boolean getArchived() { return archived;}
+
+    public void setArchived(Boolean archived) { this.archived = archived;}
 
     public Integer getId() {
         return id;

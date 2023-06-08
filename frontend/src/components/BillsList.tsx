@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getBills} from "../api/billService.tsx";
+import {archiveBill, getBills} from "../api/billService.tsx";
 import NewBillForm from "./NewBillForm.tsx";
 import BillRow from "./BillRow.tsx";
 // MUI
@@ -10,7 +10,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 function BillsList() {
-
     const [bills, setBills] = useState<any[]>([]);
     const [formVisible, setFormVisible] = useState(false);
 
@@ -28,6 +27,17 @@ function BillsList() {
         fetchBills();
         setFormVisible(false);
     };
+
+    const deleteBill = (billId: number) => {
+        archiveBill(billId).then(res => {
+            console.log("Successful archive", res);
+            fetchBills();
+        }
+        ).catch(err => {
+            console.warn(err);
+        });
+
+    }
 
     return (
         <>
@@ -73,7 +83,7 @@ function BillsList() {
                         <BillRow
                             key={bill.id}
                             bill={bill}
-                            onDelete={(billId) => console.log(billId)}
+                            onDelete={deleteBill}
                         />
                     );
                 })}

@@ -24,4 +24,9 @@ public class BillController {
     public void createBill(@RequestBody NewBillRequest newBillRequest) {
         billService.createBill(newBillRequest);
     }
+
+    @PutMapping(path = "{id}/archive")
+    public void archiveBill(@PathVariable("id") Integer id) {
+        billService.archiveBill(id);
+    }
 }
