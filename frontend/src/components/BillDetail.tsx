@@ -8,6 +8,13 @@ interface Props {
     isMobile: boolean;
 }
 
+function toTitleCase(str: string) {
+    return str.replace(/\w\S*/g, function(txt:string) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
+
 
 export default function BillDetail({bill, setVisible, bindings, isMobile}: Props) {
     // find if user is mobile
@@ -24,6 +31,8 @@ export default function BillDetail({bill, setVisible, bindings, isMobile}: Props
         year: "numeric",
     });
 
+    const titleFormatted = toTitleCase(bill.title)
+
 
     return (
         <Modal
@@ -39,7 +48,7 @@ export default function BillDetail({bill, setVisible, bindings, isMobile}: Props
                     id={"modal-title"}
                     variant={"h2"}
                 >
-                    {bill.title}
+                    {titleFormatted}
                 </Typography>
             </Modal.Header>
             <Modal.Body>

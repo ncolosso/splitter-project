@@ -1,18 +1,29 @@
 import {JSX} from "react";
 import {Image, Link, Navbar, Spacer, Text} from "@nextui-org/react";
 import {Button} from "@mui/material";
+
 // import DarkModeToggle from "./DarkModeToggle.tsx";
 
+class Page{
+    title: string;
+    link: string;
+    constructor(title: string, link: string) {
+        this.title = title;
+        this.link = link;
+    }
+}
 
 export default function NavBarMUI(): JSX.Element {
-    const collapseItems = [
-        "Home",
-        "About",
-        "Login"
+    const pages: Page[] = [
+        // ADD NEW ROUTES HERE
+        new Page("Home", "/"),
+        new Page("About", "/about"),
+        new Page("Login", "/login"),
     ]
+
+
     return (
         <Navbar
-
             isBordered
             variant={"floating"}
 
@@ -34,16 +45,16 @@ export default function NavBarMUI(): JSX.Element {
 
             </Navbar.Content>
             <Navbar.Collapse>
-                {collapseItems.map((item) => (
-                    <Navbar.CollapseItem key={item}>
+                {pages.map((item) => (
+                    <Navbar.CollapseItem key={item.title}>
                         <Link
                             color="inherit"
                             css={{
                                 minWidth: "100%",
                             }}
-                            href="#"
+                            href={item.link}
                         >
-                            {item}
+                            {item.title}
                         </Link>
                     </Navbar.CollapseItem>
                 ))}
