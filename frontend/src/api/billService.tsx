@@ -19,6 +19,15 @@ export const saveBill = async (bill: NewBillRequest) => {
     }
 }
 
+export const archiveBill = async (billId: number) => {
+    try{
+        return await axios.put(apiBaseUrl + endpoint + "/" + billId + "/archive");
+    }
+    catch (e) {
+        throw e;
+    }
+}
+
 export class NewBillRequest {
     // @ts-ignore
     private title: string;
