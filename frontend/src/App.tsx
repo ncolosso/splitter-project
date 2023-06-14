@@ -1,8 +1,8 @@
-import {Context, useState, createContext} from "react";
+import {Context, createContext, useState} from "react";
 import HomePage from "./components/HomePage.tsx";
 // import NavBar from "./components/NavBar";
 import NavBarMUI from "./components/NavBarMUI.tsx";
-import {ThemeProvider, createTheme} from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
