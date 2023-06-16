@@ -1,7 +1,12 @@
+// @ts-ignore
+import config from "../config/config.ts";
 import axios from "axios";
 
-let apiBaseUrl = "http://localhost:8080/api/v1/splitter/";
-let endpoint = "bill";
+// @ts-ignore
+const apiBaseUrl = config.apiUrl;
+const endpoint = "bill";
+
+console.log("Base Url: " + apiBaseUrl);
 
 export const getBills = async () => {
     try {

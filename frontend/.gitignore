@@ -8,3 +8,4 @@ node/npm.cmd
 node/
 
 dist/
+.env
