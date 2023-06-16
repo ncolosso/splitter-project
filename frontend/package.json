@@ -12,7 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
+    "@anatoliygatt/numeric-stepper": "^1.0.9",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.2",
     "@mui/icons-material": "^5.11.16",
@@ -25,6 +26,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.7",
+    "framer-motion": "^7.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
