@@ -1,7 +1,10 @@
 import axios from "axios";
+import configLoader from "../config/configLoader.ts";
 
-let apiBaseUrl = "http://localhost:8080/api/v1/splitter/";
+let apiBaseUrl = configLoader.apiUrl;
 let endpoint = "bill";
+
+console.log(process.env.NODE_ENV);
 
 export const getBills = async () => {
     try {
