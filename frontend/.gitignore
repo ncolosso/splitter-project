@@ -2,3 +2,10 @@
 /node_modules
 .vscode
 .idea
+.env
+/dist
+/node
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

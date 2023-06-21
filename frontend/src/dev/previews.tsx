@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from "react";
 import {ComponentPreview, Previews} from "@react-buddy/ide-toolbox";
 import {PaletteTree} from "./palette";
