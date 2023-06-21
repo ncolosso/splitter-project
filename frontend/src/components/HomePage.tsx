@@ -1,4 +1,5 @@
 import BillsList from "./BillsList.tsx";
+import "../App.css";
 import {Container} from '@nextui-org/react';
 
 function HomePage() {
@@ -8,6 +9,7 @@ function HomePage() {
             lg
         >
             <BillsList/>
+
         </Container>
     );
 }

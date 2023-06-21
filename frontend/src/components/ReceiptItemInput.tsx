@@ -11,9 +11,10 @@ interface Props {
     price: number;
     person: Person;
     quantity: number;
+    key: number;
 }
 
-export default function ReceiptItemInput({name, price, person, quantity}: Props) {
+export default function ReceiptItemInput({key, name, price, person, quantity}: Props) {
 
     // @ts-ignore
     const [value, setValue] = useState(1);
