@@ -6,6 +6,7 @@ frontend:
         - npm install
         - npm install typescript -g
         - npm install -D @types/react-dom
+        - npm install -D @types/node
     build:
       commands:
         - npm run build
